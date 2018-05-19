@@ -20,8 +20,7 @@ public class PersoonRepository {
             String PASS = "";
             connection = DriverManager.getConnection(URL, USER, PASS);
             System.out.println(connection);
-        }
-        catch(ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
             System.out.println("Error: unable to load driver class!");
             System.exit(1);
         } catch (SQLException e) {
@@ -29,37 +28,35 @@ public class PersoonRepository {
         }
     }
 
-   public List<Persoon> findAllRecords(){
-       List<Persoon> persoonList = new ArrayList<Persoon>();
-       Statement stmt = null;
-       try {
-           stmt = connection.createStatement();
-           String sql = "select * from persoon";
-           ResultSet rs = stmt.executeQuery(sql);
-           System.out.println("resultset: " +rs);
-           //STEP 5: Extract data from result set
-           while(rs.next()){
-               //Retrieve by column name
-           /*    int id  = rs.getInt("id");
-               String naam = rs.getString("naam");
-               //Display values
+    public List<Persoon> findAllRecords() {
+        List<Persoon> persoonList = new ArrayList<Persoon>();
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            String sql = "select * from persoon";
+            ResultSet rs = stmt.executeQuery(sql);
+            System.out.println("resultset: " + rs);
+            //STEP 5: Extract data from result set
+            while (rs.next()) {
+                //Retrieve by column name
+                int id = rs.getInt("id");
+                String naam = rs.getString("naam");
+            /*    //Display values
                System.out.print("ID: " + id);
-               System.out.print(", Age: " + naam);
-              persoonList.add(new Persoon(id, naam));*/
-               persoonList.add(new Persoon(rs.getInt("id"), rs.getString("naam")));
-           }
-           rs.close();
+               System.out.print(", Age: " + naam);*/
+                persoonList.add(new Persoon(id, naam));
+                //  persoonList.add(new Persoon(rs.getInt("id"), rs.getString("naam")));
+            }
+            rs.close();
 
 
-       }
-       catch (SQLException e) {
+        } catch (SQLException e) {
 
-       }
-       finally {
+        } finally {
 
-       }
+        }
         return persoonList;
-   }
+    }
 
 
 }

@@ -42,11 +42,11 @@ CREATE TABLE IF NOT EXISTS `persoon` (
 
 -- Dumping data for table adres_boek.persoon: 2 rows
 /*!40000 ALTER TABLE `persoon` DISABLE KEYS */;
-REPLACE INTO `persoon` (`id`, `naam`) VALUES
+
+/*!40101 SET SQL_MREPLACE INTO `persoon` (`id`, `naam`) VALUES
 	(1, 'Wakanda'),
 	(2, 'Tesla');
 /*!40000 ALTER TABLE `persoon` ENABLE KEYS */;
-
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+ODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
