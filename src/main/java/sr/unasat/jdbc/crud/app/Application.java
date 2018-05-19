@@ -10,24 +10,22 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-  /*      PersoonRepository persoonRepo = new PersoonRepository();
+        PersoonRepository persoonRepo = new PersoonRepository();
         List<Persoon> persoonList = persoonRepo.findAllRecords();
         for (Persoon persoon : persoonList) {
             System.out.println(persoon);
-        } */
+        }
 
-   /*     ContactInformatieRepository ciRepo = new ContactInformatieRepository();
+        ContactInformatieRepository ciRepo = new ContactInformatieRepository();
         List<ContactInformatie> contactList = ciRepo.findAllRecords();
         for (ContactInformatie contact : contactList) {
             System.out.println(contact);
         }
-*/
 
-        PersoonRepository persoonRepo = new PersoonRepository();
 /*        Persoon person = new Persoon(4);
         persoonRepo.deleteOneRecord(person);*/
 
-        int pk = persoonRepo.insertOneRecord(new Persoon("Ellen"));
+//        int pk = persoonRepo.insertOneRecord(new Persoon("Ellen"));
 
 //        ContactInformatieRepository ci = new ContactInformatieRepository();
 //        ContactInformatie recordFound = ci.findOneRecord(1234, "Manjastraat 10");
