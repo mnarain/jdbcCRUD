@@ -98,6 +98,27 @@ public class ContactInformatieRepository {
         return contactInformatie;
     }
 
+    public int updateOneRecord(ContactInformatie contact) {
+        PreparedStatement stmt = null;
+        int result = 0;
+        try {
+            String sql = "update contact_informatie ci set ci.telefoon_nummer = ?, ci.persoon_id = ? where ci.id = ?";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, contact.getTelefoonNummer());
+            stmt.setInt(2, contact.getPersoon().getId());
+            stmt.setInt(3, contact.getId());
+            result = stmt.executeUpdate();
+            System.out.println("resultset: " + result);
+
+        } catch (SQLException e) {
+
+        } finally {
+
+        }
+        return result;
+    }
+
+
 
 
 }

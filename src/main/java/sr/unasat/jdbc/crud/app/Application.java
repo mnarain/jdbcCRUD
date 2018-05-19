@@ -16,18 +16,31 @@ public class Application {
             System.out.println(persoon);
         } */
 
-        ContactInformatieRepository ciRepo = new ContactInformatieRepository();
- /*       List<ContactInformatie> contactList = ciRepo.findAllRecords();
+   /*     ContactInformatieRepository ciRepo = new ContactInformatieRepository();
+        List<ContactInformatie> contactList = ciRepo.findAllRecords();
         for (ContactInformatie contact : contactList) {
             System.out.println(contact);
         }
 */
 
-        ContactInformatie ci = ciRepo.findOneRecord(1234, "Manjastraat 10");
-        System.out.println("single record: " + ci);
+        PersoonRepository persoonRepo = new PersoonRepository();
+/*        Persoon person = new Persoon(4);
+        persoonRepo.deleteOneRecord(person);*/
+
+        int pk = persoonRepo.insertOneRecord(new Persoon("Ellen"));
+
+//        ContactInformatieRepository ci = new ContactInformatieRepository();
+//        ContactInformatie recordFound = ci.findOneRecord(1234, "Manjastraat 10");
+//        System.out.println("single record: " + ci);
+//
+//        recordFound.setTelefoonNummer(8888);
+//        recordFound.getPersoon().setId(4);
+//        ci.updateOneRecord(recordFound);
+//
+//        System.out.println(ci.findAllRecords());
+
 
     }
-
 
 
 }

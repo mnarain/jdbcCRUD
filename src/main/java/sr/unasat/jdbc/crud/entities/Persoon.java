@@ -9,6 +9,14 @@ public class Persoon {
       this.naam = naam;
   }
 
+    public Persoon(String naam) {
+        this.naam = naam;
+    }
+
+    public Persoon(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

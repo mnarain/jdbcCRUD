@@ -1,6 +1,7 @@
 package sr.unasat.jdbc.crud.repositories;
 
 import com.mysql.jdbc.Driver;
+import sr.unasat.jdbc.crud.entities.ContactInformatie;
 import sr.unasat.jdbc.crud.entities.Persoon;
 
 import java.sql.*;
@@ -58,5 +59,40 @@ public class PersoonRepository {
         return persoonList;
     }
 
+    public int insertOneRecord(Persoon persoon) {
+        PreparedStatement stmt = null;
+        int result = 0;
+        try {
+            String sql = "insert into persoon (naam) values(?)";
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1, persoon.getNaam());
+            result = stmt.executeUpdate();
+            System.out.println("resultset: " + result);
+
+        } catch (SQLException e) {
+
+        } finally {
+
+        }
+        return result;
+    }
+
+    public int deleteOneRecord(Persoon persoon){
+        PreparedStatement stmt = null;
+        int result = 0;
+        try {
+            String sql = "DELETE FROM persoon WHERE persoon.id = ?";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, persoon.getId());
+            result = stmt.executeUpdate();
+            System.out.println("deleted: " + persoon.getId());
+
+        } catch (SQLException e) {
+
+        } finally {
+
+        }
+        return result;
+    }
 
 }
