@@ -13,12 +13,12 @@ public class PersoonRepository {
 
     public PersoonRepository() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("De driver is geregistreerd!");
 
             String URL = "jdbc:mysql://localhost:3306/adres_boek";
             String USER = "root";
-            String PASS = "";
+            String PASS = "root";
             connection = DriverManager.getConnection(URL, USER, PASS);
             System.out.println(connection);
         } catch (ClassNotFoundException ex) {
