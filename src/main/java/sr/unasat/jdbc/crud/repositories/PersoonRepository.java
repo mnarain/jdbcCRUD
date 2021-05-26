@@ -16,7 +16,7 @@ public class PersoonRepository {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("De driver is geregistreerd!");
 
-            String URL = "jdbc:mysql://localhost/adres_boek";
+            String URL = "jdbc:mysql://localhost:3306/adres_boek";
             String USER = "root";
             String PASS = "";
             connection = DriverManager.getConnection(URL, USER, PASS);
