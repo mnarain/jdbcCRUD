@@ -29,7 +29,7 @@ public class PersoonRepository {
         }
     }
 
-    public List<Persoon> findAllRecords() {
+    public List<Persoon> findAllRecords(){
         List<Persoon> persoonList = new ArrayList<Persoon>();
         Statement stmt = null;
         try {

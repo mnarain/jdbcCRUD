@@ -118,7 +118,4 @@ public class ContactInformatieRepository {
         return result;
     }
 
-
-
-
 }

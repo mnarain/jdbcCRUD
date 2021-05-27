@@ -16,6 +16,9 @@ public class Application {
             System.out.println(persoon);
         }
 
+        // Persoon martha = new Persoon("Martha");
+       // persoonRepo.insertOneRecord(martha);
+
         ContactInformatieRepository ciRepo = new ContactInformatieRepository();
         List<ContactInformatie> contactList = ciRepo.findAllRecords();
         for (ContactInformatie contact : contactList) {
