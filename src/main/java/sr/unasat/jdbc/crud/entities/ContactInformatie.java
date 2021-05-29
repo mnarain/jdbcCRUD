@@ -5,6 +5,7 @@ public class ContactInformatie {
     private String adres;
     private int telefoonNummer;
     private Persoon persoon;
+    private Land land;
 
     public ContactInformatie(int id, String adres, int telefoonNummer, Persoon persoon) {
         this.id = id;
