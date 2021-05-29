@@ -1,6 +1,7 @@
 package sr.unasat.jdbc.crud.repositories;
 
 import sr.unasat.jdbc.crud.entities.ContactInformatie;
+import sr.unasat.jdbc.crud.entities.Land;
 import sr.unasat.jdbc.crud.entities.Persoon;
 
 import java.sql.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 public class ContactInformatieRepository {
     private Connection connection;
+
     public ContactInformatieRepository() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,9 +34,12 @@ public class ContactInformatieRepository {
         Statement stmt = null;
         try {
             stmt = connection.createStatement();
-            String sql = "select ci.id, ci.adres, ci.telefoon_nummer , p.id pid, p.naam pnaam from contact_informatie ci" +
+            String sql = "select ci.id, ci.adres, ci.telefoon_nummer , p.id pid, p.naam pnaam, l.id lid, l.naam land_naam" +
+                    " from contact_informatie ci" +
                     " join persoon p" +
-                    " on p.id = ci.persoon_id";
+                    " on p.id = ci.persoon_id" +
+                    " join land l  " +
+                    " on l.id = ci.land_id";
             ResultSet rs = stmt.executeQuery(sql);
             System.out.println("resultset: " + rs);
             //STEP 5: Extract data from result set
@@ -48,7 +53,11 @@ public class ContactInformatieRepository {
                 String persoonNaam = rs.getString("pnaam");
                 Persoon persoon = new Persoon(persoonId, persoonNaam);
 
-                contactList.add(new ContactInformatie(id, adres, telefoonNummer, persoon));
+                int landId = rs.getInt("lid");
+                String landNaam = rs.getString("land_naam");
+                Land land = new Land(landId, landNaam);
+
+                contactList.add(new ContactInformatie(id, adres, telefoonNummer, persoon, land));
                 //  persoonList.add(new Persoon(rs.getInt("id"), rs.getString("naam")));
             }
             rs.close();
@@ -66,9 +75,12 @@ public class ContactInformatieRepository {
         ContactInformatie contactInformatie = null;
         PreparedStatement stmt = null;
         try {
-            String sql = "select ci.id, ci.adres, ci.telefoon_nummer , p.id pid, p.naam pnaam from contact_informatie ci" +
+            String sql = "select ci.id, ci.adres, ci.telefoon_nummer , p.id pid, p.naam pnaam, l.id lid, l.naam land_naam" +
+                    " from contact_informatie ci" +
                     " join persoon p" +
-                    " on p.id = ci.persoon_id where ci.telefoon_nummer = ? or ci.adres = ?";
+                    " on p.id = ci.persoon_id" +
+                    " join land l" +
+                    " on l.id = ci.land_id where ci.telefoon_nummer = ? or ci.adres = ?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1, telNum);
             stmt.setString(2, ciAdres);
@@ -85,7 +97,11 @@ public class ContactInformatieRepository {
                 String persoonNaam = rs.getString("pnaam");
                 Persoon persoon = new Persoon(persoonId, persoonNaam);
 
-                contactInformatie = new ContactInformatie(id, adres, telefoonNummer, persoon);
+                int landId = rs.getInt("lid");
+                String landNaam = rs.getString("land_naam");
+                Land land = new Land(landId, landNaam);
+
+                contactInformatie = new ContactInformatie(id, adres, telefoonNummer, persoon, land);
             }
             rs.close();
 

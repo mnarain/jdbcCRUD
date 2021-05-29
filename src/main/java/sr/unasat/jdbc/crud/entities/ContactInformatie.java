@@ -1,24 +1,32 @@
 package sr.unasat.jdbc.crud.entities;
 
 public class ContactInformatie {
-    private int id;
+    private Integer id;
     private String adres;
-    private int telefoonNummer;
+    private Integer telefoonNummer;
     private Persoon persoon;
     private Land land;
 
-    public ContactInformatie(int id, String adres, int telefoonNummer, Persoon persoon) {
+    public ContactInformatie(Integer id, String adres, Integer telefoonNummer, Persoon persoon, Land land) {
         this.id = id;
         this.adres = adres;
         this.telefoonNummer = telefoonNummer;
         this.persoon = persoon;
+        this.land = land;
     }
 
-    public int getId() {
+    public ContactInformatie(String adres, Integer telefoonNummer, Persoon persoon, Land land) {
+        this.adres = adres;
+        this.telefoonNummer = telefoonNummer;
+        this.persoon = persoon;
+        this.land = land;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -30,11 +38,11 @@ public class ContactInformatie {
         this.adres = adres;
     }
 
-    public int getTelefoonNummer() {
+    public Integer getTelefoonNummer() {
         return telefoonNummer;
     }
 
-    public void setTelefoonNummer(int telefoonNummer) {
+    public void setTelefoonNummer(Integer telefoonNummer) {
         this.telefoonNummer = telefoonNummer;
     }
 
@@ -46,6 +54,14 @@ public class ContactInformatie {
         this.persoon = persoon;
     }
 
+    public Land getLand() {
+        return land;
+    }
+
+    public void setLand(Land land) {
+        this.land = land;
+    }
+
     @Override
     public String toString() {
         return "ContactInformatie{" +
@@ -53,6 +69,7 @@ public class ContactInformatie {
                 ", adres='" + adres + '\'' +
                 ", telefoonNummer=" + telefoonNummer +
                 ", persoon=" + persoon +
+                ", land=" + land +
                 '}';
     }
 }

@@ -1,7 +1,5 @@
 package sr.unasat.jdbc.crud.repositories;
 
-import com.mysql.jdbc.Driver;
-import sr.unasat.jdbc.crud.entities.ContactInformatie;
 import sr.unasat.jdbc.crud.entities.Persoon;
 
 import java.sql.*;

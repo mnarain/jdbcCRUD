@@ -1,8 +1,10 @@
 package sr.unasat.jdbc.crud.app;
 
 import sr.unasat.jdbc.crud.entities.ContactInformatie;
+import sr.unasat.jdbc.crud.entities.Land;
 import sr.unasat.jdbc.crud.entities.Persoon;
 import sr.unasat.jdbc.crud.repositories.ContactInformatieRepository;
+import sr.unasat.jdbc.crud.repositories.LandRepository;
 import sr.unasat.jdbc.crud.repositories.PersoonRepository;
 
 import java.util.List;
@@ -23,6 +25,16 @@ public class Application {
         List<ContactInformatie> contactList = ciRepo.findAllRecords();
         for (ContactInformatie contact : contactList) {
             System.out.println(contact);
+        }
+
+        LandRepository landRepo = new LandRepository();
+
+  //      Land guyana = new Land("Guyana");
+  //      landRepo.insertOneRecord(guyana);
+
+        List<Land> landList = landRepo.findAllRecords();
+        for (Land land : landList) {
+            System.out.println(land);
         }
 
 /*        Persoon person = new Persoon(4);

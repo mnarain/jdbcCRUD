@@ -1,7 +1,7 @@
 package sr.unasat.jdbc.crud.entities;
 
 public class Persoon {
-    private int id;
+    private Integer id;
     private String naam;
 
   public Persoon(int id, String naam){
