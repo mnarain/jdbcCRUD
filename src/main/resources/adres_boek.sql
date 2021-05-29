@@ -17,6 +17,7 @@
 
 DROP DATABASE IF EXISTS adres_boek;
 CREATE DATABASE adres_boek;
+USE adres_boek;
 --
 -- Table structure for table `contact_informatie`
 --
