@@ -79,3 +79,28 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-05-26 20:16:41
+
+DROP TABLE IF EXISTS adres_boek.land;
+
+CREATE TABLE `adres_boek`.`land` (
+  id INT NOT NULL AUTO_INCREMENT,
+  naam VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX naam_uk (naam));
+
+insert into adres_boek.land
+values(1,'Suriname');
+
+ALTER TABLE `adres_boek`.`contact_informatie`
+ADD COLUMN `land_id` INT NOT NULL DEFAULT 1 AFTER `persoon_id`,
+ADD INDEX `land_fk_idx` (`land_id`);
+
+ALTER TABLE `adres_boek`.`contact_informatie`
+ADD CONSTRAINT `land_fk`
+  FOREIGN KEY (`land_id`)
+  REFERENCES `adres_boek`.`land` (`id`);
+
+
+
+
+
