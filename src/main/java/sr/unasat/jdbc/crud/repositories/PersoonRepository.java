@@ -27,7 +27,7 @@ public class PersoonRepository {
         }
     }
 
-    public List<Persoon> findAllRecords(){
+    public List<Persoon> findAllRecords() {
         List<Persoon> persoonList = new ArrayList<Persoon>();
         Statement stmt = null;
         try {
@@ -61,7 +61,7 @@ public class PersoonRepository {
         PreparedStatement stmt = null;
         int result = 0;
         try {
-            String sql = "insert into persoon (naam) values(?)";
+            String sql = "insert into persoon (naam, id) values(?)";
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, persoon.getNaam());
             result = stmt.executeUpdate();
@@ -75,7 +75,26 @@ public class PersoonRepository {
         return result;
     }
 
-    public int deleteOneRecord(Persoon persoon){
+    public int updateOneRecord(Persoon persoon) {
+        PreparedStatement stmt = null;
+        int result = 0;
+        try {
+            String sql = "update persoon (id, naam) values(?,?)";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, persoon.getId());
+            stmt.setString(2, persoon.getNaam());
+            result = stmt.executeUpdate();
+            System.out.println("resultset: " + result);
+
+        } catch (SQLException e) {
+
+        } finally {
+
+        }
+        return result;
+    }
+
+    public int deleteOneRecord(Persoon persoon) {
         PreparedStatement stmt = null;
         int result = 0;
         try {
